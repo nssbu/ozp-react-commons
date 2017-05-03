@@ -69,6 +69,13 @@ var ProfileApi = {
             url: `${API_URL}/api/self/notification/${notificationId}/`,
             type: 'delete'
         });
+    },
+
+    updateNotification: function (notification) {
+        return $.ajax({
+            url: `${API_URL}/api/self/notification/${notification.id}`,
+            type: 'put'
+        })
     }
 };
 

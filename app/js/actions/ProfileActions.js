@@ -20,6 +20,34 @@ var ProfileActions = createActions({
             .fail(function () {
                 ProfileActions.dismissNotificationFailed(notification);
             });
+    },
+
+    acknowledgeAllNotifications(notificationList) {
+        for (let notification of notificationList){
+            acknowledgeNotification(notification);
+        }
+    },
+
+    acknowledgeNotification(notification) {
+        notification.acknowledge_status = true;
+        ProfileApi.updateNotification(notification)
+            .done(function () {
+                ProfileActions.acknowledgeNotificationCompleted(notification);
+            })
+            .fail(function () {
+                ProfileActions.acknowledgeNotificationFailed(notification);
+            });
+    }
+
+    readNotification(notification) {
+        notification.read_status = true;
+        ProfileApi.updateNotification(notification)
+            .done(function () {
+                ProfileActions.readNotificationCompleted(notification);
+            })
+            .fail(function() {
+                ProfileActions.readNotificationFailed(notification);
+            })
     }
 });
 
