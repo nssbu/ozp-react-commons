@@ -37,7 +37,7 @@ var ProfileActions = createActions({
             .fail(function () {
                 ProfileActions.acknowledgeNotificationFailed(notification);
             });
-    }
+    },
 
     readNotification(notification) {
         notification.read_status = true;
