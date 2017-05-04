@@ -4,6 +4,7 @@ var Reflux = require('reflux');
 var createActions = require('../utils/createActions');
 var ProfileApi = require('../api/Profile');
 var _  = require('../utils/_');
+var humps = require('humps');
 
 var ProfileActions = createActions({
     fetchNotifications() {
