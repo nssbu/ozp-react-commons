@@ -31,7 +31,7 @@ var ProfileActions = createActions({
     },
 
     acknowledgeNotification(notification) {
-        notification.acknowledge_status = true;
+        notification.acknowledgedStatus = true;
         console.log(notification);
         ProfileApi.updateNotification(notification)
             .done(function () {
@@ -43,7 +43,7 @@ var ProfileActions = createActions({
     },
 
     readNotification(notification) {
-        notification.read_status = true;
+        notification.readStatus = true;
         ProfileApi.updateNotification(notification)
             .done(function () {
                 ProfileActions.readNotificationCompleted(notification);
