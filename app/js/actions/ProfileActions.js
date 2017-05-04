@@ -31,8 +31,7 @@ var ProfileActions = createActions({
     },
 
     acknowledgeNotification(notification) {
-        notification.acknowledgedStatus = true;
-        ProfileApi.updateNotification(notification)
+        ProfileApi.updateNotification({acknowledgedStatus:true})
             .done(function () {
                 ProfileActions.acknowledgeNotificationCompleted(notification);
             })
@@ -42,8 +41,7 @@ var ProfileActions = createActions({
     },
 
     readNotification(notification) {
-        notification.readStatus = true;
-        ProfileApi.updateNotification(notification)
+        ProfileApi.updateNotification({readStatus: true})
             .done(function () {
                 ProfileActions.readNotificationCompleted(notification);
             })
