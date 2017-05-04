@@ -45,11 +45,6 @@ var UserNotifications = React.createClass({
             );
         }
         return null;
-    },
-
-    _markAllAcknowledged() {
-        var notifications = this.props.notifications;
-        var openDropdown = this.props.openDropdown;
     }
 
 });

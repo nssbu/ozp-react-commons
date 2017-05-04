@@ -23,6 +23,7 @@ var ProfileActions = createActions({
     },
 
     acknowledgeAllNotifications(notificationList) {
+        console.log('acknowledgeAllNotifications')
         for (let notification of notificationList){
             acknowledgeNotification(notification);
         }
