@@ -24,10 +24,9 @@ var ProfileActions = createActions({
 
     acknowledgeAllNotifications(notificationList) {
         console.log(notificationList)
-        var vm = this;
         console.log('acknowledgeAllNotifications')
         for (let notification of notificationList){
-            vm.acknowledgeNotification(notification);
+            ProfileActions.acknowledgeNotification(notification);
         }
     },
 
