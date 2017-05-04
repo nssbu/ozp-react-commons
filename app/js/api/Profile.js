@@ -73,7 +73,7 @@ var ProfileApi = {
 
     updateNotification: function (notification) {
         return $.ajax({
-            url: `${API_URL}/api/self/notification/${notification.id}`,
+            url: `${API_URL}/api/self/notification/${notification.id}/`,
             type: 'put'
         })
     }
