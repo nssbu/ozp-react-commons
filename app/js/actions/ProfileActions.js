@@ -32,8 +32,9 @@ var ProfileActions = createActions({
 
     acknowledgeNotification(notification) {
         notification.acknowledgedStatus = true;
-        console.log(notification);
-        ProfileApi.updateNotification(notification)
+        
+        console.log(humps.decamelize(notification));
+        ProfileApi.updateNotification(humps.decamelize(notification))
             .done(function () {
                 ProfileActions.acknowledgeNotificationCompleted(notification);
             })
