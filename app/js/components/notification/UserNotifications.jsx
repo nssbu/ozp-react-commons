@@ -50,10 +50,6 @@ var UserNotifications = React.createClass({
     _markAllAcknowledged() {
         var notifications = this.props.notifications;
         var openDropdown = this.props.openDropdown;
-        if(openDropdown){
-            ProfileActions.AcknowledgeAllNotifications(notifications);
-        }
-
     }
 
 });

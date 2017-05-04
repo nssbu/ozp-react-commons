@@ -25,7 +25,7 @@ var UserNotificationDropdown = React.createClass({
 
     openDropdown() {
         var notifications = this.props.notifications;
-        ProfileActions.AcknowledgeAllNotifications(notifications);
+        ProfileActions.acknowledgeAllNotifications(notifications);
         if($(this.getDOMNode()).find('.UserNotification').length > 1) {
             $(this.getDOMNode()).addClass('open');
         }
