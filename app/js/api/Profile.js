@@ -74,7 +74,10 @@ var ProfileApi = {
     updateNotification: function (notification) {
         return $.ajax({
             url: `${API_URL}/api/self/notification/${notification.id}/`,
-            type: 'put'
+            type: 'put',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(humps.decamelizeKeys(notification))
         })
     }
 };

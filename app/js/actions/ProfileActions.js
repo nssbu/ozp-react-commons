@@ -4,7 +4,6 @@ var Reflux = require('reflux');
 var createActions = require('../utils/createActions');
 var ProfileApi = require('../api/Profile');
 var _  = require('../utils/_');
-var humps = require('humps');
 
 var ProfileActions = createActions({
     fetchNotifications() {
@@ -33,9 +32,7 @@ var ProfileActions = createActions({
 
     acknowledgeNotification(notification) {
         notification.acknowledgedStatus = true;
-        
-        console.log(humps.decamelizeKeys(notification));
-        ProfileApi.updateNotification(humps.decamelizeKeys(notification))
+        ProfileApi.updateNotification(notification)
             .done(function () {
                 ProfileActions.acknowledgeNotificationCompleted(notification);
             })
