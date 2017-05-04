@@ -24,7 +24,6 @@ var UserNotificationDropdown = React.createClass({
     },
 
     openDropdown() {
-         console.log('markallacknowledged')
         var notifications = this.props.notifications;
         ProfileActions.AcknowledgeAllNotifications(notifications);
         if($(this.getDOMNode()).find('.UserNotification').length > 1) {
@@ -37,7 +36,6 @@ var UserNotificationDropdown = React.createClass({
     },
 
     render() {
-        console.log('WTF')
         var notifications = this.state.notifications;
         var unacknowledgedNotifications = _.filter(notifications, function(n){ return !n.acknowledged_status});
         var hasUnacknowledgedNotifications = unacknowledgedNotifications && unacknowledgedNotifications.length > 0;
@@ -58,10 +56,10 @@ var UserNotificationDropdown = React.createClass({
 
         return (
             <li data-toggle="tooltip" data-placement="bottom" data-original-title={tooltip} className={notificationButtonClasses} id="notification-dropdown">
-                <a href="#" data-toggle="dropdown" id="tourstop-notifications" onClick={this._acknowledgeAll()}>
+                <a href="#" data-toggle="dropdown" id="tourstop-notifications">
                     <i className={bellClassNames}></i>
                     <span className="hidden-span"> notifications, {(this.state.notifications) ? this.state.notifications.length : 0} unread notifications</span>
-                    {hasNotifications && <span className="NotificationBadge" data-badge={this.state.unacknowledgedNotifications.length}></span>} 
+                    {hasNotifications && <span className="NotificationBadge" data-badge={unacknowledgedNotifications.length}></span>} 
                 </a>
                 {
                     hasNotifications &&

@@ -9,7 +9,6 @@ var ProfileActions = require('../../actions/ProfileActions.js');
 var UserNotifications = React.createClass({
 
     _renderNotification(notification, openDropdown) {
-        console.log('wha')
         return <UserNotification
             updateHud={this.props.updateHud}
             key={notification.id}
@@ -32,7 +31,6 @@ var UserNotifications = React.createClass({
     },
 
     render() {
-        console.log('euu7eraea')
         var notifications = this.props.notifications;
         if (notifications && notifications.length > 0) {
             // HACK: this is a hotfix to fix for the next release, adding a new
@@ -50,7 +48,6 @@ var UserNotifications = React.createClass({
     },
 
     _markAllAcknowledged() {
-        console.log('markallacknowledged')
         var notifications = this.props.notifications;
         var openDropdown = this.props.openDropdown;
         if(openDropdown){
