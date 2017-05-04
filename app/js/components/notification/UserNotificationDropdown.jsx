@@ -61,9 +61,9 @@ var UserNotificationDropdown = React.createClass({
         var tooltip = (hasUnacknowledgedNotifications) ? (unacknowledgedNotifications.length > 1) ? `${unacknowledgedNotifications.length} new notifications` : `${unacknowledgedNotifications.length} new notification` : 'No new notifications';
 
         return (
-            <li data-toggle="tooltip" data-placement="bottom" data-original-title={tooltip} className={notificationButtonClasses} id="notification-dropdown">
+            <li data-toggle="tooltip" data-placement="bottom" data-original-title={tooltip} className={notificationButtonClasses} id="notification-dropdown" onClick = "{acknowledgeNotifications}">
                 <a href="#" data-toggle="dropdown" id="tourstop-notifications">
-                    <i className={bellClassNames} onClick = "{acknowledgeNotifications()}"></i>
+                    <i className={bellClassNames}></i>
                     <span className="hidden-span"> notifications, {(this.state.notifications) ? this.state.notifications.length : 0} unread notifications</span>
                     {hasNotifications && <span className="NotificationBadge" data-badge={unacknowledgedNotifications.length}></span>} 
                 </a>
