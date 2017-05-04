@@ -24,9 +24,6 @@ var UserNotificationDropdown = React.createClass({
     },
 
     openDropdown() {
-        var notifications = this.props.notifications;
-        console.log('openDropdown');
-        ProfileActions.acknowledgeAllNotifications(notifications);
         if($(this.getDOMNode()).find('.UserNotification').length > 1) {
             $(this.getDOMNode()).addClass('open');
         }
@@ -53,12 +50,20 @@ var UserNotificationDropdown = React.createClass({
           'disabled': !hasNotifications
         });
 
+        function acknowledgeNotifications(){
+            console.log('acknowledgeNotifications');
+            if(hasUnacknowledgedNotifications){
+                console.log('hasUnacknowledgedNotifications')
+                ProfileActions.acknowledgeAllNotifications(unacknowledgedNotifications);
+            }
+        }
+
         var tooltip = (hasUnacknowledgedNotifications) ? (unacknowledgedNotifications.length > 1) ? `${unacknowledgedNotifications.length} new notifications` : `${unacknowledgedNotifications.length} new notification` : 'No new notifications';
 
         return (
             <li data-toggle="tooltip" data-placement="bottom" data-original-title={tooltip} className={notificationButtonClasses} id="notification-dropdown">
                 <a href="#" data-toggle="dropdown" id="tourstop-notifications">
-                    <i className={bellClassNames}></i>
+                    <i className={bellClassNames} onClick = "{acknowledgeNotifications()}"></i>
                     <span className="hidden-span"> notifications, {(this.state.notifications) ? this.state.notifications.length : 0} unread notifications</span>
                     {hasNotifications && <span className="NotificationBadge" data-badge={unacknowledgedNotifications.length}></span>} 
                 </a>
