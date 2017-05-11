@@ -35,7 +35,7 @@ var UserNotificationDropdown = React.createClass({
 
     render() {
         var notifications = this.state.notifications;
-        var unacknowledgedNotifications = _.filter(notifications, function(n){ return !n.acknowledged_status});
+        var unacknowledgedNotifications = _.filter(notifications, function(n){ return !n.acknowledgedStatus});
         var hasUnacknowledgedNotifications = unacknowledgedNotifications && unacknowledgedNotifications.length > 0;
         var hasNotifications = notifications && notifications.length > 0;
         var bellClassNames = cx({
