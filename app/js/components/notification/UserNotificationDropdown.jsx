@@ -51,7 +51,6 @@ var UserNotificationDropdown = React.createClass({
         });
 
         function acknowledgeNotifications(){
-            console.log(unacknowledgedNotifications)
             if(hasUnacknowledgedNotifications){
                 ProfileActions.acknowledgeAllNotifications(unacknowledgedNotifications);
             }
