@@ -75,6 +75,11 @@ var SelfStore = Reflux.createStore({
     onDismissNotificationCompleted: function (notification) {
         _.remove(this.notifications, notification);
         this.doTrigger();
+    },
+
+    onAcknowledgeNotificationCompleted: function (notification) {
+        _.find(this.notifications, {'id':notification.id}).acknowledgedStatus = true;
+        this.doTrigger();
     }
 });
 
