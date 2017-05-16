@@ -39,7 +39,7 @@ var UserNotifications = React.createClass({
                 <ul style={{'zIndex': '10000000'}} className="dropdown-menu UserNotifications">
                     { this._renderNotifications(this.props.func) }
                     <li>
-                      <a href='#'><span onClick={() => this.props.moreNotifications()}>See more</span></a>
+                      <span onClick={() => this.props.moreNotifications()}>See more</span>
                     </li>
                 </ul>
             );
