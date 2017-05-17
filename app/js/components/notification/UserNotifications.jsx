@@ -14,12 +14,13 @@ var UserNotifications = React.createClass({
             key={notification.id}
             notification={notification}
             openDropdown={openDropdown}
+            onClick={ProfileActions.readNotification(notification)}
             />;
     },
 
     _renderNotifications() {
         var notifications = this.props.notifications;
-        var length = 3;//notifications.length;
+        var length = 5;//notifications.length;
         var openDropdown = this.props.openDropdown;
 
         return notifications.slice(0, length).map((notification, index) => {
