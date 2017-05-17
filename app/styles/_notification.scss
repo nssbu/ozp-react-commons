@@ -78,11 +78,11 @@
 .unread {
     color: $gray-lighter;
     .created-by {
-        font-weight: bolder;
+        font-weight: 700;
         color: $white;
     }
      .created-at {
-        font-weight: bolder;
+        font-weight: 600;
         color: $gray-lightest;
     }
 }
