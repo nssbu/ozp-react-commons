@@ -83,7 +83,7 @@ var SelfStore = Reflux.createStore({
     },
     
     onReadNotificationCompleted: function (notification) {
-        _find(this.notifications, {'id':notification.id}).readStatus = true;
+        _.find(this.notifications, {'id':notification.id}).readStatus = true;
         this.doTrigger();
     }
 });
