@@ -13,9 +13,6 @@
     float: right;
   }
 }
-.UserNotification.unread {
-    font-weight: bold;
-}
 
 .UserNotification {
     padding: 0px 15px;
@@ -75,6 +72,18 @@
 
     a {
         color: $white;
+    }
+}
+
+.unread {
+    color: $gray-lighter;
+    .created-by {
+        font-weight: bolder;
+        color: $white;
+    }
+     .created-at {
+        font-weight: bolder;
+        color: $gray-lightest;
     }
 }
 
