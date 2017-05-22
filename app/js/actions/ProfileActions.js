@@ -29,7 +29,7 @@ var ProfileActions = createActions({
     },
 
     acknowledgeNotification(notification) {
-        ProfileApi.updateNotification({id: notification.id, acknowledgedStatus:true})
+        ProfileApi.updateNotification({id: notification.id, acknowledgedStatus:true, expiresDate: notification.expiresDate, message: notification.message})
             .done(function () {
                 ProfileActions.acknowledgeNotificationCompleted(notification);
             })
@@ -39,7 +39,7 @@ var ProfileActions = createActions({
     },
 
     readNotification(notification) {
-        ProfileApi.updateNotification({id: notification.id, readStatus: true})
+        ProfileApi.updateNotification({id: notification.id, readStatus: true, expiresDate: notification.expiresDate, message: notification.message})
             .done(function () {
                 ProfileActions.readNotificationCompleted(notification);
             })
