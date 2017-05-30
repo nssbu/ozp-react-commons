@@ -68,7 +68,7 @@ var UserNotification = React.createClass({
         };
 
         return (
-            <li className={(this.props.notification.readStatus === false ? 'unread ': '') + "UserNotification clearfix"} onClick={SelfActions.readNotification(this.props.notification)}>
+            <li className={(this.props.notification.readStatus === false ? 'unread ': '') + "UserNotification clearfix"} onClick={() => {SelfActions.readNotification(this.props.notification)}}>
                 <button type="button" className="close pull-right" onClick={this.onDismiss}><i className="icon-cross-16"></i></button>
                 <h5 className="created-by">
                   { listing ? listing.title : 'AppsMall'}
