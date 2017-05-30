@@ -67,9 +67,8 @@ var UserNotification = React.createClass({
           return {__html: marked(choppedMessage(), { renderer: renderer })};
         };
 
-console.log(this.props.notification);
         return (
-            <li className={(this.props.notification.readStatus === false ? 'unread ': '') + "UserNotification clearfix"} >
+            <li className={(this.props.notification.readStatus === false ? 'unread ': '') + "UserNotification clearfix"} onClick={SelfActions.readNotification(this.props.notification)}>
                 <button type="button" className="close pull-right" onClick={this.onDismiss}><i className="icon-cross-16"></i></button>
                 <h5 className="created-by">
                   { listing ? listing.title : 'AppsMall'}

@@ -14,7 +14,6 @@ var UserNotifications = React.createClass({
             key={notification.id}
             notification={notification}
             openDropdown={openDropdown}
-            onClick={ProfileActions.readNotification(notification)}
             />;
     },
 
