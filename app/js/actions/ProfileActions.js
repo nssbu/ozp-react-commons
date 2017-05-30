@@ -29,23 +29,27 @@ var ProfileActions = createActions({
     },
 
     acknowledgeNotification(notification) {
-        ProfileApi.updateNotification({id: notification.id, acknowledgedStatus:true})
-            .done(function () {
-                ProfileActions.acknowledgeNotificationCompleted(notification);
-            })
-            .fail(function () {
-                ProfileActions.acknowledgeNotificationFailed(notification);
-            });
+        if(acknowledgedStatus === false) {
+            ProfileApi.updateNotification({id: notification.id, acknowledgedStatus:true})
+                .done(function () {
+                    ProfileActions.acknowledgeNotificationCompleted(notification);
+                })
+                .fail(function () {
+                    ProfileActions.acknowledgeNotificationFailed(notification);
+                });
+        }
     },
 
     readNotification(notification) {
-        ProfileApi.updateNotification({id: notification.id, readStatus: true})
-            .done(function () {
-                ProfileActions.readNotificationCompleted(notification);
-            })
-            .fail(function() {
-                ProfileActions.readNotificationFailed(notification);
-            })
+        if(notification.readStatus === false){
+            ProfileApi.updateNotification({id: notification.id, readStatus: true})
+                .done(function () {
+                    ProfileActions.readNotificationCompleted(notification);
+                })
+                .fail(function() {
+                    ProfileActions.readNotificationFailed(notification);
+                });
+        }
     }
 });
 

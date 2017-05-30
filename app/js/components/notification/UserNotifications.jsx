@@ -14,7 +14,7 @@ var UserNotifications = React.createClass({
             key={notification.id}
             notification={notification}
             openDropdown={openDropdown}
-            onClick={() => {if(notification.readStatus===false)ProfileActions.readNotification(notification)}}
+            onClick={ProfileActions.readNotification(notification)}
             />;
     },
 
@@ -40,7 +40,7 @@ var UserNotifications = React.createClass({
                 <ul style={{'zIndex': '10000000'}} className="dropdown-menu UserNotifications">
                     { this._renderNotifications(this.props.func) }
                     <li>
-                      <span onClick={() => this.props.moreNotifications()}>See more</span>
+                      <button className="btn btn-primary btn-sm" onClick={() => this.props.moreNotifications()}>See more</button>
                     </li>
                 </ul>
             );
@@ -51,4 +51,3 @@ var UserNotifications = React.createClass({
 });
 
 module.exports = UserNotifications;
-//<button className="btn btn-primary btn-sm" onClick={() => this.props.moreNotifications()}>See more</button>
