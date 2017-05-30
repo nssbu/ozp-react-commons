@@ -29,7 +29,7 @@ var ProfileActions = createActions({
     },
 
     acknowledgeNotification(notification) {
-        if(acknowledgedStatus === false) {
+        if(notification.acknowledgedStatus === false) {
             ProfileApi.updateNotification({id: notification.id, acknowledgedStatus:true})
                 .done(function () {
                     ProfileActions.acknowledgeNotificationCompleted(notification);
