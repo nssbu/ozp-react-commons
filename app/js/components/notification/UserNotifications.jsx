@@ -9,13 +9,12 @@ var ProfileActions = require('../../actions/ProfileActions.js');
 var UserNotifications = React.createClass({
 
     _renderNotification(notification, openDropdown) {
-        
         return <UserNotification
             updateHud={this.props.updateHud}
             key={notification.id}
             notification={notification}
             openDropdown={openDropdown}
-            onClick = {this.handleClick}
+            onClick={() => {if(notification.readStatus===false)ProfileActions.readNotification(notification)}}
             />;
     },
 
@@ -47,13 +46,7 @@ var UserNotifications = React.createClass({
             );
         }
         return null;
-    },
-
-    handleClick: function(e) {
-            console.log(e)
-            if(notification.readStatus === false)
-                ProfileActions.readNotification(notification);
-        }
+    }
 
 });
 
