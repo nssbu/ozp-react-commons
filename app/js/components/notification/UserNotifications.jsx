@@ -10,6 +10,7 @@ var UserNotifications = React.createClass({
 
     _renderNotification(notification, openDropdown) {
         function handleClick(e) {
+            console.log(e)
             if(notification.readStatus === false)
                 ProfileActions.readNotification(notification);
         }
@@ -51,7 +52,7 @@ var UserNotifications = React.createClass({
         }
         return null;
     }
-    
+
 });
 
 module.exports = UserNotifications;
