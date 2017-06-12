@@ -20,6 +20,36 @@ var ProfileActions = createActions({
             .fail(function () {
                 ProfileActions.dismissNotificationFailed(notification);
             });
+    },
+    
+    acknowledgeAllNotifications(notificationList) {
+        for (let notification of notificationList){
+            ProfileActions.acknowledgeNotification(notification);
+        }
+    },
+
+    acknowledgeNotification(notification) {
+        if(notification.acknowledgedStatus === false) {
+            ProfileApi.updateNotification({id: notification.id, acknowledgedStatus: true})
+            .done(function () {
+                ProfileActions.acknowledgeNotificationCompleted(notification);
+            })
+            .fail(function () {
+                ProfileActions.acknowledgeNotificationFailed(notification);
+            });
+        }
+    },
+
+    readNotification(notification) {
+        if(notification.readStatus === false) {
+            ProfileApi.updateNotification({id: notification.id, readStatus: true})
+            .done(function () {
+                ProfileActions.readNotificationCompleted(notification);
+            })
+            .fail(function () {
+                ProfileActions.readNotificationFailed(notification);
+            })
+        }
     }
 });
 
