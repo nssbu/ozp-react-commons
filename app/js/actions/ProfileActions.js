@@ -23,9 +23,7 @@ var ProfileActions = createActions({
     },
 
     acknowledgeAllNotifications(notificationList) {
-        for (let notification of notificationList){
-            ProfileActions.acknowledgeNotification(notification);
-        }
+        notificationList.forEach(ProfileActions.acknowledgeNotification);
     },
 
     acknowledgeNotification(notification) {
