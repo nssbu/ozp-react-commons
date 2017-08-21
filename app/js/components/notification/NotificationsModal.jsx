@@ -69,13 +69,9 @@ var NotificationInfo = React.createClass({
     render: function() {
         return (
             <div className="row">
-            <div className="col-xs-4">
-            <ul className="nav nav-pills nav-inverse nav-stacked">
-                <NotificationSideBar activeNotificationIndex={this.state.activeNotificationIndex}
-                notificationList={this.state.notificationList} 
-                handleNotificationChange={this.handleNotificationChange}/>
-            </ul>
-            </div>
+            <NotificationSideBar activeNotificationIndex={this.state.activeNotificationIndex}
+            notificationList={this.state.notificationList} 
+            handleNotificationChange={this.handleNotificationChange}/>
             <div className="col-xs-8">
             { this.state.notificationList.length > 0 &&
                 <Notification notification={this.state.notificationList[this.state.activeNotificationIndex]} />
@@ -164,7 +160,8 @@ var NotificationSideBar = React.createClass({
         var notis = this.props.notificationList.slice(0);
         
         return ( 
-            <div>
+            <div className="col-xs-4">
+            <ul className="nav nav-pills nav-inverse nav-stacked">
             {notis.map((n, i) => {
             var date = new Date(n.createdDate);
             var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -178,6 +175,7 @@ var NotificationSideBar = React.createClass({
                 </li>
             );
             })}
+            </ul>
             </div>
         );
     }
