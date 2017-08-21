@@ -15,40 +15,21 @@ var { API_URL } = require('../../OzoneConfig');
  var renderer = new marked.Renderer();
 
 var NotificationsModal = React.createClass({
-    mixins: [Reflux.ListenerMixin],
-    getInitialState: function() {
-        return {
-            notificationList: [],
-            backRoute: (History.length > 1) ?
-                    this.goBack : 
-                    this.getActiveRoutePath()
-        };
-    },
+    mixins: [Navigation],
+    
     propTypes: {
         backRoute: React.PropTypes.oneOfType([
             React.PropTypes.string.isRequired,
             React.PropTypes.func.isRequired
         ])
     },
-    componentWillMount: function() {
-        this.listenTo(SelfActions.fetchNotificationsCompleted, response => {
-            this.setState({
-                notificationList: response._response
-            });
-        });
-        this.listenTo(SelfActions.dismissNotificationCompleted, () => {
-            SelfActions.fetchNotifications();
-        })
-
-        SelfActions.fetchNotifications();
-    },
+    
     render: function() { 
-        console.log(this.state.notificationList)
         return (
             <Modal title="Notifications" ref="modal"
             className="notification-window"
-            onCancel={this.close}>
-                <NotificationInfo notificationList={this.state.notificationList} />
+             onHidden={this.props.onHidden} onCancel={this.close}>
+                <NotificationInfo />
             </Modal>
         );
     },
@@ -66,13 +47,24 @@ var NotificationsModal = React.createClass({
 });
 
 var NotificationInfo = React.createClass({
-    propTypes: {
-        notificationList: React.PropTypes.array.isRequired,
-    },
+    mixins: [Reflux.ListenerMixin],
     getInitialState: function() {
         return {
-            activeNotificationIndex: 0       
+            activeNotificationIndex: 0,
+            notificationList: []       
         }
+    },
+    componentWillMount: function() {
+        this.listenTo(SelfActions.fetchNotificationsCompleted, response => {
+            this.setState({
+                notificationList: response._response
+            });
+        });
+        this.listenTo(SelfActions.dismissNotificationCompleted, () => {
+            SelfActions.fetchNotifications();
+        })
+
+        SelfActions.fetchNotifications();
     },
     render: function() {
         return (
@@ -80,16 +72,16 @@ var NotificationInfo = React.createClass({
             <div className="col-xs-4">
             <ul className="nav nav-pills nav-inverse nav-stacked">
                 <NotificationSideBar activeNotificationIndex={this.state.activeNotificationIndex}
-                notificationList={this.props.notificationList} 
+                notificationList={this.state.notificationList} 
                 handleNotificationChange={this.handleNotificationChange}/>
             </ul>
             </div>
             <div className="col-xs-8">
-            { this.props.notificationList.length > 0 &&
-                <Notification notification={this.props.notificationList[this.state.activeNotificationIndex]} />
+            { this.state.notificationList.length > 0 &&
+                <Notification notification={this.state.notificationList[this.state.activeNotificationIndex]} />
             }
 
-            { !this.props.notificationList.length &&
+            { !this.state.notificationList.length &&
                 <span>No notifications</span>
             }
             </div>
@@ -108,7 +100,6 @@ var Notification = React.createClass({
     
     render: function() { 
         var notification = this.props.notification;
-        console.log(this.props.notification)
         if(!this.props.notification)
             return <div></div>
         var createNotificationText = function() {
