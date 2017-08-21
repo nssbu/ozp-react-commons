@@ -18,8 +18,17 @@ var NotificationsModal = React.createClass({
     mixins: [Reflux.ListenerMixin],
     getInitialState: function() {
         return {
-            notificationList: []
+            notificationList: [],
+            backRoute: (History.length > 1) ?
+                    this.goBack : 
+                    this.getActiveRoutePath()
         };
+    },
+    propTypes: {
+        backRoute: React.PropTypes.oneOfType([
+            React.PropTypes.string.isRequired,
+            React.PropTypes.func.isRequired
+        ])
     },
     componentWillMount: function() {
         this.listenTo(SelfActions.fetchNotificationsCompleted, response => {
@@ -149,7 +158,9 @@ var Notification = React.createClass({
             </div>
           );
     },
-    onDismiss: function(){},
+    onDismiss: function(notification){
+        SelfActions.dismissNotification(notification);
+    }
 });
 
 var NotificationSideBar = React.createClass({
