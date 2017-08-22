@@ -168,9 +168,8 @@ var NotificationSideBar = React.createClass({
             var formattedDate = months[date.getMonth()] + ' ' + date.getDate() + ', ' +  date.getFullYear();
             return (
                 <li role="presentation" alt={`Notification ${i + 1} from ${(n.listing) ? n.listing.title : 'AppsMall'}`} tabIndex={i} 
-                onClick={(event) => {this.props.handleNotificationChange(event, i)}}
-                className={i===this.props.activeNotificationIndex?'notification-selected':''}>
-                <a href="#" onClick={(e) => {e.preventDefault()}}>
+                onClick={(event) => {this.props.handleNotificationChange(event, i)}}>
+                <a href="#" onClick={(e) => {e.preventDefault()}} className={i===this.props.activeNotificationIndex?'notification-selected':''}>
                     {(n.listing) ? n.listing.title : 'AppsMall'} <small>{formattedDate}</small>
                 </a>
                 </li>
