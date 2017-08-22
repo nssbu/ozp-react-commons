@@ -115,7 +115,7 @@ var Notification = React.createClass({
                   }
                   { notification.notificationType === "peer_bookmark" &&
                     <div>
-                      <p className="message small">{notification.author.user.username} has shared a the folder <b>{notification.peer.folderName}</b> with you.</p>
+                      <p className="message small">{notification.author.user.username} has shared the folder <b>{notification.peer.folderName}</b> with you.</p>
                       <p className="message small">{notification.message}</p>
                       <div>
                         <button className="btn btn-success btn-sm" onClick={() => {
@@ -168,7 +168,8 @@ var NotificationSideBar = React.createClass({
             var formattedDate = months[date.getMonth()] + ' ' + date.getDate() + ', ' +  date.getFullYear();
             return (
                 <li role="presentation" alt={`Notification ${i + 1} from ${(n.listing) ? n.listing.title : 'AppsMall'}`} tabIndex={i} 
-                onClick={(event) => {this.props.handleNotificationChange(event, i)}}>
+                onClick={(event) => {this.props.handleNotificationChange(event, i)}}
+                className={i===this.props.activeNotificationIndex?'notification-selected':''}>
                 <a href="#" onClick={(e) => {e.preventDefault()}}>
                     {(n.listing) ? n.listing.title : 'AppsMall'} <small>{formattedDate}</small>
                 </a>
