@@ -115,8 +115,9 @@ var Notification = React.createClass({
                   }
                   { notification.notificationType === "peer_bookmark" &&
                     <div>
-                      <p className="message small">{notification.author.user.username} has shared the folder <b>{notification.peer.folderName}</b> with you.</p>
-                      <p className="message small">{notification.message}</p>
+                      <p className="message small">{notification.author.user.username} has shared a folder with you.</p>
+                      {notification.peer.folder_name && <p className="message small">Folder Name: {notification.peer.folder_name}</p>}
+                      {notification.message && <p className="message small">Message: {notification.message}</p>}
                       <div>
                         <button className="btn btn-success btn-sm" onClick={() => {
                             $.ajax({
@@ -130,7 +131,7 @@ var Notification = React.createClass({
                             }).success(() => {
                               this.onDismiss(notification);
                             });
-                          }}>Add {notification.peer.folderName}</button>
+                          }}>Add folder {notification.peer.folder_name}</button>
                       </div>
                     </div>
                   }
