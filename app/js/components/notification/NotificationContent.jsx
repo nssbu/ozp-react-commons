@@ -6,7 +6,7 @@ var marked = require('marked');
 var renderer = new marked.Renderer();
 
 NotificationContent = React.createClass({
-    propTypes: {notification: React.propTypes.object.isRequired},
+    propTypes: {notification: React.PropTypes.object.isRequired},
     render: function() {
         var notification = this.props.notification;
         if (!notification)
