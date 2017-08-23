@@ -26,7 +26,7 @@ var NotificationsModal = React.createClass({
     
     render: function() { 
         return (
-            <Modal title="Notifications" ref="modal"
+            <Modal modaltitle="Notifications" ref="modal"
             className="notification-window"
              onHidden={this.props.onHidden} onCancel={this.close}>
                 <NotificationInfo />
