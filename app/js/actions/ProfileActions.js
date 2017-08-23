@@ -53,7 +53,19 @@ var ProfileActions = createActions({
     updateProfileFlags(data) {
        ProfileApi.updateProfileFlags(data)
            .done(ProfileActions.updateProfileFlagsCompleted);
-    } 
+    },
+
+    addBookmarkFolder(bookmarkFolder, notification){
+        ProfileApi.addBookmarkFolder(bookmarkFolder)
+        .success(function() {
+            if(notification)
+                ProfileActions.dismissNotification(notification);
+            ProfileActions.addBookMarkFolderCompleted(bookmarkFolder);
+        })
+        .fail(function () {
+            ProfileActions.addBookmarkFolderFailed(bookmarkFolder);
+        })
+    }
 });
 
 _.assign(ProfileActions, Reflux.createActions([

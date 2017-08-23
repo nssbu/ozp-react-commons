@@ -93,7 +93,13 @@ var ProfileApi = {
             contentType: 'application/json',
             data: JSON.stringify(humps.decamelizeKeys(notification))
         })
+    },
+
+    addBookmarkFolder: function (bookmarkFolder) {
+        
     }
+
+    
 };
 
 module.exports = ProfileApi;

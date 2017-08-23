@@ -9,6 +9,7 @@ var { Navigation } = require('react-router');
 
 var SelfStore = require('../../stores/SelfStore');
 var SelfActions = require('../../actions/ProfileActions.js');
+var NotificationContent = require ('./NotificationContent')
 var { API_URL } = require('../../OzoneConfig');
 
  var marked = require('marked');
@@ -110,31 +111,7 @@ var Notification = React.createClass({
                 <h4>{(notification.listing) ? notification.listing.title : 'AppsMall'} <small>{formattedDate}</small></h4>
                 <div>
     
-                  { notification.notificationType !== "peer_bookmark" &&
-                    <span className="message small" dangerouslySetInnerHTML={createNotificationText()}></span>
-                  }
-                  { notification.notificationType === "peer_bookmark" &&
-                    <div>
-                      <p className="message small">{notification.author.user.username} has shared a folder with you.</p>
-                      {notification.peer.folder_name && <p className="message small">Folder Name: {notification.peer.folder_name}</p>}
-                      {notification.message && <p className="message small">Message: {notification.message}</p>}
-                      <div>
-                        <button className="btn btn-success btn-sm" onClick={() => {
-                            $.ajax({
-                                type: 'POST',
-                                dataType: 'json',
-                                contentType: 'application/json',
-                                url: API_URL + '/api/self/library/import_bookmarks/',
-                                data: JSON.stringify({
-                                  "bookmark_notification_id": notification.id
-                                })
-                            }).success(() => {
-                              this.onDismiss(notification);
-                            });
-                          }}>Add folder {notification.peer.folder_name}</button>
-                      </div>
-                    </div>
-                  }
+                  <NotificationContent notification={notification} />
                   <br /><br />
                   <button className="btn btn-danger right" aria-label={`Remove notification from ${(notification.listing) ? notification.listing.title : 'AppsMall'}`} onClick={() => {
                       this.onDismiss(notification);
