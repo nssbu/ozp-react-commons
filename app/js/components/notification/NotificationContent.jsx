@@ -5,7 +5,7 @@ var SelfActions = require('../../actions/ProfileActions.js');
 var marked = require('marked');
 var renderer = new marked.Renderer();
 
-NotificationContent = React.createClass({
+var NotificationContent = React.createClass({
     propTypes: {notification: React.PropTypes.object.isRequired},
     render: function() {
         var notification = this.props.notification;
