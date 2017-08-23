@@ -9,7 +9,7 @@ var { Navigation } = require('react-router');
 
 var SelfStore = require('../../stores/SelfStore');
 var SelfActions = require('../../actions/ProfileActions.js');
-var NotificationContent = require ('./NotificationContent.jsx')
+var NotificationContent = require ('./NotificationContent.jsx');
 var { API_URL } = require('../../OzoneConfig');
 
  var marked = require('marked');

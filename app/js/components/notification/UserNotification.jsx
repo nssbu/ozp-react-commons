@@ -7,7 +7,7 @@ var Time = require('../Time.jsx');
 var $ = require('jquery');
 var { API_URL } = require('../../OzoneConfig');
 var CenterModalLink = require('../CenterModalLink.jsx');
-var NotificationContent = require('./NotificationContent.jsx')
+var NotificationContent = require('./NotificationContent.jsx');
 
 var SelfActions = require('../../actions/ProfileActions.js');
 var marked = require('marked');
