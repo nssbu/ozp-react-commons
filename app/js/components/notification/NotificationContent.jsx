@@ -35,4 +35,4 @@ NotificationContent = React.createClass({
     }
 });
 
-model.exports= NotificationContent;
+module.exports= NotificationContent;
