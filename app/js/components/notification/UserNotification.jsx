@@ -84,10 +84,10 @@ var UserNotification = React.createClass({
                     <_Date date={createdDate} />
                     <Time date={createdDate} />
                 </div>
-                { !(this.props.notification.notificationType === "PEER.BOOKMARK") &&
+                { !(this.props.notification.notificationType === "peer_bookmark") &&
                   <p className="message small" dangerouslySetInnerHTML={createNotificationText()}></p>
                 }
-                { this.props.notification.notificationType === "PEER.BOOKMARK" &&
+                { this.props.notification.notificationType === "peer_bookmark" &&
                   <div>
                     <p className="message small">{this.props.notification.author.user.username} has shared the folder <b>{this.props.notification.peer.folderName}</b> with you.</p>
                     <p className="message small">{this.props.notification.message}</p>

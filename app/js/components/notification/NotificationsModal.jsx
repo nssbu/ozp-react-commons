@@ -127,7 +127,7 @@ var Notification = React.createClass({
                                 data: JSON.stringify({
                                   "bookmark_notification_id": notification.id
                                 })
-                            }).done(() => {
+                            }).success(() => {
                               this.onDismiss(notification);
                             });
                           }}>Add {notification.peer.folderName}</button>
