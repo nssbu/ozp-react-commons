@@ -96,10 +96,16 @@ var ProfileApi = {
     },
 
     addBookmarkFolder: function (bookmarkFolder) {
-        
-    }
-
-    
+        return $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: API_URL + '/api/self/library/import_bookmarks/',
+            data: JSON.stringify({
+            "bookmark_notification_id": this.props.notification.id
+            })
+        });
+    }   
 };
 
 module.exports = ProfileApi;

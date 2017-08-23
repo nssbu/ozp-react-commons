@@ -9,6 +9,7 @@ var NotificationContent = React.createClass({
     propTypes: {notification: React.PropTypes.object.isRequired},
     render: function() {
         var notification = this.props.notification;
+        console.log(notification);
         if (!notification)
             return (<div></div>);
         var createNotificationText = function() {
@@ -22,12 +23,12 @@ var NotificationContent = React.createClass({
             { notification.notificationType === "peer_bookmark" &&
                 <div>
                 <p className="message small">{notification.author.user.username} has shared a folder with you.</p>
-                {notification.peer.folder_name && <p className="message small">Folder Name: {notification.peer.folder_name}</p>}
+                {notification.peer.folderName && <p className="message small">Folder Name: {notification.peer.folderName}</p>}
                 {notification.message && <p className="message small">Message: {notification.message}</p>}
                 <div>
                     <button className="btn btn-success btn-sm" onClick={() => {
                         SelfActions.addBookmarkFolder(notification.peer, notification);
-                    }}>Add folder {notification.peer.folder_name}</button>
+                    }}>Add folder {notification.peer.folderName}</button>
                 </div>
                 </div>
             }
