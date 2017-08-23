@@ -89,7 +89,7 @@ var UserNotification = React.createClass({
                 }
                 { this.props.notification.notificationType === "PEER.BOOKMARK" &&
                   <div>
-                    <p className="message small">{this.props.notification.author.user.username} has shared a the folder <b>{this.props.notification.peer.folderName}</b> with you.</p>
+                    <p className="message small">{this.props.notification.author.user.username} has shared the folder <b>{this.props.notification.peer.folderName}</b> with you.</p>
                     <p className="message small">{this.props.notification.message}</p>
                     <div>
                       <button className="btn btn-default btn-sm" onClick={this.onDismiss}>Ignore</button>
