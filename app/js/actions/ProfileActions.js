@@ -55,15 +55,14 @@ var ProfileActions = createActions({
            .done(ProfileActions.updateProfileFlagsCompleted);
     },
 
-    addBookmarkFolder(bookmarkFolder, notification){
-        ProfileApi.addBookmarkFolder(bookmarkFolder)
+    addBookmarkFolder(notification){
+        ProfileApi.addBookmarkFolder(notification)
         .success(function() {
-            if(notification)
-                ProfileActions.dismissNotification(notification);
-            ProfileActions.addBookMarkFolderCompleted(bookmarkFolder);
+            ProfileActions.dismissNotification(notification);
+            ProfileActions.addBookMarkFolderCompleted(notification);
         })
         .fail(function () {
-            ProfileActions.addBookmarkFolderFailed(bookmarkFolder);
+            ProfileActions.addBookmarkFolderFailed(notification);
         })
     }
 });
