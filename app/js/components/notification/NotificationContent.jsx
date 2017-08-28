@@ -19,19 +19,18 @@ var NotificationContent = React.createClass({
             <div>
                 { notification.notificationType !== "peer_bookmark" &&
                 <span className="message small" dangerouslySetInnerHTML={createNotificationText()}></span>
-            }
-            { notification.notificationType === "peer_bookmark" &&
-                <div>
-                <p className="message small">{notification.author.user.username} has shared a folder with you.</p>
-                {notification.peer.folderName && <p className="message small">Folder Name: {notification.peer.folderName}</p>}
-                {notification.message && <p className="message small">Message: {notification.message}</p>}
-                <div>
-                    <button className="btn btn-success btn-sm" onClick={() => {
-                        SelfActions.addBookmarkFolder(notification.peer, notification);
-                    }}>Add folder {notification.peer.folderName}</button>
-                </div>
-                </div>
-            }
+                }
+                { notification.notificationType === "peer_bookmark" &&
+                    <div>
+                    <p className="message small">{notification.author.user.username} has shared {notification.peer.folderName?'the folder '+notification.peer.folderName :'a folder'} with you.</p>
+                    {notification.message && <p className="message small">Message: {notification.message}</p>}
+                    <div>
+                        <button className="btn btn-success btn-sm" onClick={() => {
+                            SelfActions.addBookmarkFolder(notification.peer, notification);
+                        }}>Add folder {notification.peer.folderName}</button>
+                    </div>
+                    </div>
+                }
             </div>
         )
     }
