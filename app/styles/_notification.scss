@@ -3,7 +3,7 @@
     $divider-height: (9px * 2) + 1px;
     $notifications-visible: 7;
 
-    padding: 0 9;
+    padding: 0;
     width: 400px;
     max-height: ($notification-height + $divider-height) * $notifications-visible;
     overflow-y: auto;
@@ -20,7 +20,7 @@
 }
 
 .UserNotification {
-    padding: 0px 15px;
+    padding: 5px 15px;
     background-color: $gray-darkest;
     color: $gray-light;
     word-wrap: break-word;
