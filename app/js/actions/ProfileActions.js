@@ -59,7 +59,7 @@ var ProfileActions = createActions({
         ProfileApi.addBookmarkFolder(notification)
         .success(function() {
             ProfileActions.dismissNotification(notification);
-            ProfileActions.addBookMarkFolderCompleted(notification);
+            ProfileActions.addBookmarkFolderCompleted(notification);
         })
         .fail(function () {
             ProfileActions.addBookmarkFolderFailed(notification);
