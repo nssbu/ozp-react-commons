@@ -96,6 +96,7 @@ var ProfileApi = {
     },
 
     addBookmarkFolder: function (notification) {
+        console.log(notification)
         return $.ajax({
             type: 'POST',
             dataType: 'json',

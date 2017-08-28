@@ -9,7 +9,6 @@ var NotificationContent = React.createClass({
     propTypes: {notification: React.PropTypes.object.isRequired},
     render: function() {
         var notification = this.props.notification;
-        console.log(notification);
         if (!notification)
             return (<div></div>);
         var createNotificationText = function() {
@@ -26,7 +25,7 @@ var NotificationContent = React.createClass({
                     {notification.message && <p className="message small">Message: {notification.message}</p>}
                     <div>
                         <button className="btn btn-success btn-sm" onClick={() => {
-                            SelfActions.addBookmarkFolder(notification.peer, notification);
+                            SelfActions.addBookmarkFolder(notification);
                         }}>Add folder {notification.peer.folderName}</button>
                     </div>
                     </div>
