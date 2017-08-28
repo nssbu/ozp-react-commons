@@ -12,6 +12,12 @@
     margin: 5px 15px 15px 0;
     float: right;
   }
+
+  .divider {
+      padding:0;
+      margin:0;
+      background-color:inherit !important;
+  }
 }
 
 .UserNotification {
@@ -77,9 +83,16 @@
 }
 
 .unread {
+    border-left: $blue solid 4px;
+
     .created-by {
         font-weight: 700;
     }
+
+    .created-at {
+        font-weight: 400;
+    }
+
 }
 
 .NotificationBadge {
