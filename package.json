@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/nssbu/ozp-react-commons",
   "dependencies": {
-    "bootstrap-sass": "git://github.com/nssbu/ozp-bootstrap-sass",
+    "bootstrap-sass": "git://github.com/nssbu/ozp-bootstrap-sass#master",
     "es5-shim": "^4.0.6",
     "humps": "2.0.1",
     "jquery": "^2.1.1",
