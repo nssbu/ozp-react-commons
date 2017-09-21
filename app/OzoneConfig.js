@@ -13,7 +13,7 @@ window.OzoneConfig = {
     "API_URL": '/* @echo API_URL */',
     // @endif
     // @ifndef API_URL
-    "API_URL": 'http://localhost:4440',
+    "API_URL": 'http://localhost:4440', //TODO: AML has this set to 'https://localhost:8443/marketplace'. Change to that?
     // @endif
     // @ifdef HELP_URL
     "HELP_URL": '/* @echo HELP_URL */',
@@ -25,7 +25,7 @@ window.OzoneConfig = {
     "METRICS_URL": '/* @echo METRICS_URL */',
     // @endif
     // @ifndef METRICS_URL
-    "METRICS_URL": "https://www.owfgoss.org:10443/dev/metrics/",
+    "METRICS_URL": "https://www.owfgoss.org:10443/dev/metrics/", //TODO: AML has this set to "http://172.16.98.67/metrics-3.0/". Change to that?
     // @endif
     // @ifdef METRICS_HUD_SITE_ID
     "METRICS_HUD_SITE_ID": '/* @echo METRICS_HUD_SITE_ID */',
@@ -43,7 +43,7 @@ window.OzoneConfig = {
     "CENTER_URL": '/* @echo CENTER_URL */',
     // @endif
     // @ifndef CENTER_URL
-    "CENTER_URL": "http://localhost:8000/",
+    "CENTER_URL": "http://localhost:8000/", //TODO: AML has this set to "http://localhost:8000/dist". Change to that?
     // @endif
     // @ifdef CENTER_REVIEWS_CHAR_LIMIT
     "CENTER_REVIEWS_CHAR_LIMIT": '/* @echo CENTER_REVIEWS_CHAR_LIMIT */',
@@ -55,7 +55,7 @@ window.OzoneConfig = {
     "HUD_URL": '/* @echo HUD_URL */',
     // @endif
     // @ifndef HUD_URL
-    "HUD_URL": "http://localhost:8088/",
+    "HUD_URL": "http://localhost:8088/", //TODO: AML has this set to "http://localhost:8088/dist". Change to that?
     // @endif
     // @ifdef WEBTOP_URL
     "WEBTOP_URL": '/* @echo WEBTOP_URL */',
