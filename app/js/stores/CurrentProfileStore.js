@@ -14,11 +14,12 @@ var ProfileApi = require('../api/Profile');
 var CurrentProfileStore = Reflux.createStore({
     ownedListings: [],
     profile: null,
+    isSelf: false,
 
     listenables: ProfileActions,
 
     getDefaultData: function() {
-        return _.pick(this, 'profile', 'ownedListings');
+        return _.pick(this, 'profile', 'ownedListings', 'isSelf');
     },
 
     doTrigger: function() {
