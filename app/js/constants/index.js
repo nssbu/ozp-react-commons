@@ -23,7 +23,6 @@ module.exports = {
         SUBMITTED: 'submitted',
         CREATED: 'created',
         ENABLED: 'enabled',
-        PENDING_DELETION: 'Submitted for Deletion',
         DISABLED: 'disabled',
         TAG_CREATED: 'tag_created',
         TAG_DELETED: 'tag_deleted',
@@ -44,7 +43,6 @@ module.exports = {
         BROWSER_INCLUDED: 'browser_included',
         BROWSER_NOT_INCLUDED: 'browser_not_included',
         LOCAL_SCORECARD_QUESTION_UPDATED: 'local_scorecard_question_updated'
-
     },
 
     approvalStatus: {
@@ -52,8 +50,7 @@ module.exports = {
         PENDING: 'Pending, Organization',
         APPROVED_ORG: 'Pending, Center',
         APPROVED: 'Published',
-        REJECTED: 'Returned to Owner',
-        PENDING_DELETION: 'Pending Deletion'
+        REJECTED: 'Returned to Owner'
     },
 
     UserRole: {

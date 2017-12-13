@@ -3,7 +3,6 @@
 @import "mixins";
 @import "switches";
 @import "notification";
-@import "notification-window";
 @import "profile-window";
 @import "contacts-window";
 @import "settings-window";
@@ -108,11 +107,6 @@ button.close {
         padding: 5px 25px;
     }
 
-    .popover-header {
-      color:#3b4246;
-      font-size:28px;
-    }
-
     .popover-title {
         background: transparent;
         color: $blue-dark;
@@ -124,7 +118,7 @@ button.close {
     .popover-subtitle {
         padding-top: 0;
     }
-
+    
     .popover-content,
     .popover-navigation {
         color: $gray-darker;
@@ -132,12 +126,6 @@ button.close {
 
     .popover-navigation {
         padding-bottom: 25px;
-    }
-
-    #end-tour-btn:hover, #end-tour-btn:focus, #end-tour-btn.focus, #end-tour-btn:active, #end-tour-btn.active {
-        color: #ffffff;
-        background-color: #087399;
-        border-color: #087399;
     }
 
     &.bottom > .arrow { border-bottom-color: $blue; }
@@ -177,3 +165,4 @@ button.close {
   opacity: 0.9;
   filter: alpha(opacity=90);
 }
+

@@ -35,13 +35,11 @@ var UserNotificationDropdown = React.createClass({
 
     render() {
         var notifications = this.state.notifications;
-        var unacknowledgedNotifications = _.filter(notifications, function(n){ return !n.acknowledgedStatus});
-        var hasUnacknowledgedNotifications = unacknowledgedNotifications && unacknowledgedNotifications.length > 0;
         var hasNotifications = notifications && notifications.length > 0;
         var bellClassNames = cx({
             'icon-bell-filled-blue': hasNotifications,
             'icon-bell-grayLightest': !hasNotifications,
-            activeIcon: unacknowledgedNotifications
+            activeIcon: hasNotifications
         });
 
         var notificationButtonClasses = cx({
@@ -50,20 +48,13 @@ var UserNotificationDropdown = React.createClass({
           'disabled': !hasNotifications
         });
 
-        function acknowledgeNotifications(){
-            if(hasUnacknowledgedNotifications){
-                ProfileActions.acknowledgeAllNotifications(unacknowledgedNotifications);
-            }
-        }
-
-        var tooltip = (hasUnacknowledgedNotifications) ? (unacknowledgedNotifications.length > 1) ? `${unacknowledgedNotifications.length} new notifications` : `${unacknowledgedNotifications.length} new notification` : 'No new notifications';
+        var tooltip = (hasNotifications) ? (notifications.length > 1) ? `${notifications.length} new notifications` : `${notifications.length} new notification` : 'No new notifications';
 
         return (
-            <li data-toggle="tooltip" data-placement="bottom" data-original-title={tooltip} className={notificationButtonClasses} id="notification-dropdown" onClick = {acknowledgeNotifications}>
+            <li data-toggle="tooltip" data-placement="bottom" data-original-title={tooltip} className={notificationButtonClasses} id="notification-dropdown">
                 <a href="#" data-toggle="dropdown" id="tourstop-notifications">
                     <i className={bellClassNames}></i>
                     <span className="hidden-span"> notifications, {(this.state.notifications) ? this.state.notifications.length : 0} unread notifications</span>
-                    {hasUnacknowledgedNotifications && <span className="NotificationBadge" data-badge={unacknowledgedNotifications.length}></span>} 
                 </a>
                 {
                     hasNotifications &&
