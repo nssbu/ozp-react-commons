@@ -1,10 +1,8 @@
 'use strict';
-//Is this used???
+
 var React = require('react');
 var Reflux = require('reflux');
 var UserNotification = require('./UserNotification.jsx');
-var ProfileActions = require('../../actions/ProfileActions.js');
-
 
 var UserNotifications = React.createClass({
 
@@ -13,13 +11,12 @@ var UserNotifications = React.createClass({
             updateHud={this.props.updateHud}
             key={notification.id}
             notification={notification}
-            openDropdown={openDropdown}
-            />;
+            openDropdown={openDropdown} />;
     },
 
     _renderNotifications() {
         var notifications = this.props.notifications;
-        var length = 5;
+        var length = 3;//notifications.length;
         var openDropdown = this.props.openDropdown;
 
         return notifications.slice(0, length).map((notification, index) => {

@@ -9,16 +9,9 @@ var Time = React.createClass({
 
     mixins: [React.addons.PureRenderMixin],
 
-    formatZero(num) {
-        if (num < 10) {
-            num = "0" + num;
-        }
-        return num;
-    },
-
     render() {
         var { date } = this.props;
-        var time = this.formatZero(date.getUTCHours()) + '' + this.formatZero(date.getUTCMinutes()) + ' Z';
+        var time = date.toTimeString().replace(/:\d{2} GMT-\d{4}/, '').replace(/[(|)]/g, '');
 
         return (
             <span className="Time">{time}</span>

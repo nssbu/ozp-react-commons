@@ -56,70 +56,6 @@ var ProfileInfo = React.createClass({
         ProfileActions.fetchOwnedListings(this.props.profileId);
     },
 
-    toggleFlags: function(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        var profile = this.state.profile;
-
-        switch (target.id) {
-            case 'email':
-                this.setState({
-                    emailNotificationFlag: value
-                });
-                profile.emailNotificationFlag = value;
-                break;
-            case 'listing':
-                this.setState({
-                    listingNotificationFlag: value
-                });
-                profile.listingNotificationFlag = value;
-                break;
-            case 'subscription':
-                this.setState({
-                    subscriptionNotificationFlag: value
-                });
-                profile.subscriptionNotificationFlag = value;
-            default:
-        }
-
-        ProfileActions.updateProfileFlags(profile);
-    },
-
-    renderPreferences: function() {
-        var notificationTip = null,
-            preferences = null,
-            profile = this.state.profile;
-
-        if (!profile.listingNotificationFlag && !profile.emailNotificationFlag && !profile.subscriptionNotificationFlag) {
-            notificationTip = <h6 className="notification-tip">You will still receive critical notifications from the system</h6>;
-        }
-
-        preferences = <div>
-            <h4>Preferences</h4>
-            {notificationTip}
-            <input type="checkbox" className="switch-checkbox" id="email" defaultChecked={profile.emailNotificationFlag} onChange={this.toggleFlags}/>
-            <label className="switch switch-label" htmlFor="email">
-                <span className="switch-inner"></span>
-                <span className="switch-slider"></span>
-            </label>
-            <h5 className="switch-text">Email Notifications</h5><br/>
-            <input type="checkbox" className="switch-checkbox" id="listing" defaultChecked={profile.listingNotificationFlag} onChange={this.toggleFlags}/>
-            <label className=" switch switch-label" htmlFor="listing">
-                <span className="switch-inner"></span>
-                <span className="switch-slider"></span>
-            </label>
-            <h5 className="switch-text">Listing Notifications</h5><br/>
-            <input type="checkbox" className="switch-checkbox" id="subscription" defaultChecked={profile.subscriptionNotificationFlag} onChange={this.toggleFlags}/>
-            <label className="switch switch-label" htmlFor="subscription">
-                <span className="switch-inner"></span>
-                <span className="switch-slider"></span>
-            </label>
-            <h5 className="switch-text">Subscription Notifications</h5>
-        </div>;
-
-        return preferences;
-    },
-
     render: function() {
         var profile = this.state.profile,
             linkEl = this.props.listingLinkEl,
@@ -128,7 +64,6 @@ var ProfileInfo = React.createClass({
             );
 
         if (profile) {
-
             return (
                 <section>
                     <div className="col-md-4 col-sm-6">
@@ -137,7 +72,6 @@ var ProfileInfo = React.createClass({
                         <p><b>{profile.username}</b><br />{profile.email}</p>
                     </div>
                     <div className="col-md-8 col-sm-6 owned-listings">
-                        {CurrentProfileStore.isSelf ? this.renderPreferences() : null}
                         <h4>{profile.displayName}'s Listings</h4>
                         <ul>{listings}</ul>
                         { listings.length < 1 &&
@@ -176,7 +110,7 @@ var ProfileWindow = React.createClass({
 
     render: function() {
         return (
-            <Modal modaltitle="Profile" ref="modal"
+            <Modal title="Profile" ref="modal"
                     className="profile-window"
                     onCancel={this.close}>
                 <ProfileInfo profileId={this.props.profileId}
